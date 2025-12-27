@@ -2,7 +2,7 @@ export interface Task {
 	id: number;
 	descricao: string;
 	data: Date;
-	status: 'completed' | 'in_progress' | 'pending';
+	status: 'completed' | 'in_progress';
 }
 
 const tarefa: Task = {

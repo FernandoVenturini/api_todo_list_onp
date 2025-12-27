@@ -12,7 +12,7 @@ const router = Router();
 
 
 // BUSCAR TAREFAS
-router.get('/tasks');
+router.get('/tasks', taskController.get);
 
 // BUSCAR UMA UNICA TAREFA
 router.get('/task/:id_task');

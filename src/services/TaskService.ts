@@ -13,7 +13,20 @@ class TaskService {
 
 	}
 
-	add(data: Task) {
+	get(status: string) { // Method to get tasks by status
+		const result = taskRepository.get(); // Calling the get method of TaskRepository
+
+		const tasks: Task[] = []; // Initializing an array to hold tasks
+
+		result.map((obj) => { // Iterating through the tasks
+			if(obj.status === status) { // Checking if the task status matches the requested status
+				tasks.push(obj); // Returning the matching task
+			};
+		});
+		return tasks; // Returning the array of matching tasks
+	};
+
+	add(data: Task): Task {
 		return taskRepository.add(data); // Calling the add method of TaskRepository
 	}
 }

@@ -14,8 +14,24 @@ const taskService = new TaskService();
 
 // Defining TaskController class
 class TaskController {
+	
 	// Constructor method
-	constructor() { }
+	constructor() {
+
+	}
+
+	get(Req: Request, Res: Response) {
+		const status = Req.query.status; // Extracting status from query parameters
+
+		if(status && (status === "in_progress" || status === "completed")) {
+		
+			const result = taskService.get(status); // Calling the get method of TaskService
+			Res.status(200).json(result); // Sending success response with the retrieved tasks
+
+		} else {
+			Res.status(401).json({ message: "Status da tarefa não fornecido." });
+		}
+	}
 
 	add(Req: Request, Res: Response) {
 		// Method to add a task
@@ -26,15 +42,14 @@ class TaskController {
 
 			if (
 				status === "in_progress" ||
-				status === "completed" ||
-				status === "pending"
+				status === "completed"
 			) {
 				const result = taskService.add(Req.body); // Calling the add method of TaskService
 				Res.status(201).json(result); // Sending success response with the added task
 			} else {
 				Res.status(400).json({
 					message:
-						'Status da tarefa inválido. Use "in_progress", "completed" ou "pending".',
+						'Status da tarefa inválido. Use "in_progress", "completed".',
 				}); // Sending error response for invalid status
 			}
 		} else {
