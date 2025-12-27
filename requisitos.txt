@@ -8,7 +8,7 @@ EU COMO USUARIO QUERO DESMARCAR UMA TAREFA CONCLUIDA.
 
 ===============================================================================
 
-ROUTE - /task/add - Adicionar uma TAREFA
+ROUTE - /task - Adicionar uma TAREFA
 
 Nao posso adicionar uma tarefa se eu nao estiver logado
 Nao posso adicionar com uma data e hora que ja passou
@@ -23,7 +23,7 @@ Nao posso adicionar com uma data e hora que ja passou
 ==============================================================================
 
 
-ROUTE - /task/update/{id_task} - editar uma tarefa
+ROUTE - /task/{id_task} - editar uma tarefa
 
 {
 	id
@@ -36,7 +36,7 @@ ROUTE - /task/update/{id_task} - editar uma tarefa
 
 ====================================================
 
-ROUTE - /task/delete/{id_task} - Excluir uma tarefa
+ROUTE - /task/{id_task} - Excluir uma tarefa
 
 ====================================================
 
