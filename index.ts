@@ -6,6 +6,8 @@ import router from './routes';
 // Creating an instance of express
 const server = express(); 
 
+const PORT = 3000;
+
 // Middleware to parse URL-encoded bodies
 server.use(express.urlencoded({ extended: true })); 
 
@@ -13,5 +15,5 @@ server.use(express.urlencoded({ extended: true }));
 server.use(router); 
 
 server.listen(3000, () => {
-	  console.log('Server is running on http://localhost:3000'); // Logging server start message
+	  console.log(`SERVER IS RUNNING ON PORT ${PORT}`); // Logging server start message
 });

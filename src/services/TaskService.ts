@@ -26,6 +26,21 @@ class TaskService {
 		return tasks; // Returning the array of matching tasks
 	};
 
+
+	getById(id_task: string): Task | {} { // Method to get a task by its ID
+		const result = taskRepository.get(); // Calling the getById method of TaskRepository
+
+		let task = {}; // Initializing an object to hold the task
+
+		result.map((obj) => {
+			if(obj.id === Number(id_task)) {
+				task = obj; // Returning the found task
+			}
+		});
+		return task; // Returning the found task
+	};
+	
+
 	add(data: Task): Task {
 		return taskRepository.add(data); // Calling the add method of TaskRepository
 	}

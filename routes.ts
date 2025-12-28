@@ -10,12 +10,12 @@ const taskController = new TaskController();
 // Creating a new router instance
 const router = Router(); 
 
-
+// ROTAS:
 // BUSCAR TAREFAS
 router.get('/tasks', taskController.get);
 
 // BUSCAR UMA UNICA TAREFA
-router.get('/task/:id_task');
+router.get('/task/:id_task', taskController.getById);
 
 // ADICIONA UMA TAREFA
 router.post('/task', taskController.add);

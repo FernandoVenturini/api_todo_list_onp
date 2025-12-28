@@ -33,6 +33,17 @@ class TaskController {
 		}
 	}
 
+	getById(Req: Request, Res: Response) {
+		const { id_task } = Req.params;
+
+		if(id_task) {
+			const result = taskService.getById(id_task); // Calling the getById method of TaskService
+			Res.status(200).json(result); // Sending success response with the retrieved task
+		} else {
+			Res.status(401).json({ message: "ID da tarefa não fornecido." });
+		}
+	};
+
 	add(Req: Request, Res: Response) {
 		// Method to add a task
 		const { id, descricao, data, status } = Req.body; // Destructuring task details from request body
