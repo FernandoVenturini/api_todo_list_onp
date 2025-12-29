@@ -68,7 +68,12 @@ class TaskController {
 				message: "Dados incompletos para adicionar a tarefa.",
 			}); // Sending error response for incomplete data
 		}
-	} // Fecha o método add
-} // Fecha a classe TaskController
+	} 
+
+	update(Req: Request, Res: Response) {
+		const { id, descricao, data, status } = Req.body; // Destructuring task details from request body
+		
+	}
+} 
 
 export default TaskController;

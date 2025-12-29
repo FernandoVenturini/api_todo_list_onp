@@ -21,7 +21,7 @@ router.get('/task/:id_task', taskController.getById);
 router.post('/task', taskController.add);
 
 // ATUALIZA UMA TAREFA
-router.put('/task/:id_task');
+router.put('/task/:id_task', taskController.update);
 
 // DELETA UMA TAREFA
 router.delete('/task/:id_task');
