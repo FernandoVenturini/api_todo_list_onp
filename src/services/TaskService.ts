@@ -39,11 +39,33 @@ class TaskService {
 		});
 		return task; // Returning the found task
 	};
+
+	getIndexById(id_task: string): number { // Method to get the index of a task by its ID
+			const result = taskRepository.get(); // Calling the get method of TaskRepository
+			let position: number = 99999; // Initializing a variable to hold the index of the task
+
+			result.map((obj, index) => {
+			if(obj.id === Number(id_task)) {
+				position = index; // Storing the index of the found task
+			}
+
+		});
+		return position; // Returning the index of the found task
+	}
 	
 
 	add(data: Task): Task {
 		return taskRepository.add(data); // Calling the add method of TaskRepository
 	}
+
+
+	update(data: Task, id_task: string) {
+		const position = this.getIndexById(id_task); // Fetching the existing task by ID
+		if (position !== 99999) {
+			return {}; // If task not found, return empty object}
+		}
+		
+	} 
 }
 
 export default TaskService;

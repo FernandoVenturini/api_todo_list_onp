@@ -15,5 +15,5 @@ server.use(express.urlencoded({ extended: true }));
 server.use(router); 
 
 server.listen(3000, () => {
-	  console.log(`SERVER IS RUNNING ON PORT ${PORT}`); // Logging server start message
+	  console.log(`SERVER IS RUNNING ON PORT ${PORT}...`); // Logging server start message
 });

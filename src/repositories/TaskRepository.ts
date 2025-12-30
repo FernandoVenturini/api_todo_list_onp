@@ -18,6 +18,13 @@ class TaskRepository {
 		this.tasks.push(data); // Add the new task to the tasks array
 		return data; // Return the added task
 	}
+
+
+
+	update(data: Task, position: number) { // Method to update an existing task		
+		this.tasks[position] = data; // Update the task at the specified index
+		return data; // Return the updated task
+	}
 }
 
 export default TaskRepository;

@@ -34,13 +34,13 @@ class TaskController {
 	}
 
 	getById(Req: Request, Res: Response) {
-		const { id_task } = Req.params;
+		const { id_task } = Req.params; // Extracting id_task from request parameters
 
 		if(id_task) {
-			const result = taskService.getById(id_task); // Calling the getById method of TaskService
+			const result = taskService.getById( id_task); // Calling the getById method of TaskService
 			Res.status(200).json(result); // Sending success response with the retrieved task
 		} else {
-			Res.status(401).json({ message: "ID da tarefa não fornecido." });
+			Res.status(400).json({ message: "ID da tarefa não fornecido." });
 		}
 	};
 
@@ -72,7 +72,28 @@ class TaskController {
 
 	update(Req: Request, Res: Response) {
 		const { id, descricao, data, status } = Req.body; // Destructuring task details from request body
-		
+		const { id_task } = Req.params; // Extracting id_task from request parameters
+
+		if(id && descricao && data && status && id_task) {
+			// Checking if all required fields are present
+			if (status === "in_progress" || status === "completed") {
+
+				const result = taskService.update(Req.body, id_task); // Calling the update method of TaskService
+				if (result && Object.keys(result).length > 0) {
+					Res.status(200).json(result); // Sending success response with the updated task
+				} else {
+					Res.status(404).json({ message: "Tarefa não encontrada." }); // Sending error response if task not found
+				}
+				Res.status(200).json({ message: "Tarefa atualizada com sucesso." }); // Sending success response for task update
+			} else {
+				Res.status(400).json({
+					message:
+						'Status da tarefa inválido. Use "in_progress", "completed".',
+				}); // Sending error response for invalid status
+			}
+		} else {
+			Res.status(400).json({ message: "Dados incompletos para atualizar a tarefa." });
+		}
 	}
 } 
 
