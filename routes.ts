@@ -24,7 +24,7 @@ router.post('/task', taskController.add);
 router.put('/task/:id_task', taskController.update);
 
 // DELETA UMA TAREFA
-router.delete('/task/:id_task');
+router.delete('/task/:id_task', taskController.delete);
 
 
 export default router; // Exporting the router as default export

@@ -25,6 +25,12 @@ class TaskRepository {
 		this.tasks[position] = data; // Update the task at the specified index
 		return data; // Return the updated task
 	}
+
+
+	delete(position: number) { // Method to delete a task by its ID
+		delete this.tasks[position]; // Remove the task at the specified index
+		return position;
+	}
 }
 
 export default TaskRepository;
